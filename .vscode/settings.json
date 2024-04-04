@@ -1,0 +1,8 @@
+{
+  "console-ninja.allowConsoleLogToTriggerPredictions": false,
+  "console-ninja.output.showLogsOnlyFromOpenedFiles": false,
+  "console-ninja.predictiveLoggingEnabled": false,
+  "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+    "webpack": false
+  }
+}

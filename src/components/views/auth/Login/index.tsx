@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import AuthLayout from "@/components/layouts/AuthLayout";
 
 const LoginView = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,28 +44,21 @@ const LoginView = () => {
   };
 
   return (
-    <div className={styles.login}>
-      <h1 className={styles.login__title}>Login</h1>
-      {error && <p className={styles.login__error}>{error}</p>}
-      <div className={styles.login__form}>
-        <form onSubmit={handleSubmit}>
-          <Input label="Email" type="email" name="email" />
-          <Input label="Password" type="password" name="password" />
-          <Button type="submit" className={styles.login__form__button}>
-            {isLoading ? "Loading..." : "Login"}
-          </Button>
-        </form>
-        <hr className={styles.login__form__devider} />
-        <div className={styles.login__form__other}>
-          <Button type="button" onClick={() => signIn("google", { callbackUrl, redirect: false })} className={styles.login__form__other__button}>
-            <i className="bx bxl-google" /> Login with google
-          </Button>
-        </div>
+    <AuthLayout title="Login" error={error} link="/auth/register" linkText="Don't have an account?">
+      <form onSubmit={handleSubmit}>
+        <Input label="Email" type="email" name="email" />
+        <Input label="Password" type="password" name="password" />
+        <Button type="submit" className={styles.login__button}>
+          {isLoading ? "Loading..." : "Login"}
+        </Button>
+      </form>
+      <hr className={styles.login__devider} />
+      <div className={styles.login__other}>
+        <Button type="button" onClick={() => signIn("google", { callbackUrl, redirect: false })} className={styles.login__other__button}>
+          <i className="bx bxl-google" /> Login with google
+        </Button>
       </div>
-      <p className={styles.login__link}>
-        Don{"'"}t have an account? Sign up <Link href="/auth/register">here</Link>
-      </p>
-    </div>
+    </AuthLayout>
   );
 };
 

@@ -5,7 +5,7 @@ type Proptypes = {
   onClick?: () => void;
   children: React.ReactNode;
   variant?: string;
-  className: string;
+  className?: string;
 };
 
 const Button = (props: Proptypes) => {

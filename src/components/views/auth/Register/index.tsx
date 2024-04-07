@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./Register.module.scss";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 
 const RegisterView = () => {
   const { push } = useRouter();
@@ -46,23 +48,11 @@ const RegisterView = () => {
       {error && <p className={styles.register__error}>{error}</p>}
       <div className={styles.register__form}>
         <form onSubmit={handleSubmit}>
-          <div className={styles.register__form__item}>
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" className={styles.register__form__item__input} />
-          </div>
-          <div className={styles.register__form__item}>
-            <label htmlFor="fullname">Fullname</label>
-            <input type="text" name="fullname" id="fullname" className={styles.register__form__item__input} />
-          </div>
-          <div className={styles.register__form__item}>
-            <label htmlFor="phone">Phone</label>
-            <input type="text" name="phone" id="phone" className={styles.register__form__item__input} />
-          </div>
-          <div className={styles.register__form__item}>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" className={styles.register__form__item__input} />
-          </div>
-          <button className={styles.register__form__button}>{ isLoading ? "Loading..." : "Register" }</button>
+          <Input label="Email" type="email" name="email" />
+          <Input label="Fullname" type="text" name="fullname" />
+          <Input label="Phone" type="number" name="phone" />
+          <Input label="Password" type="password" name="password" />
+          <Button type="submit" className={styles.register__form__button}>{isLoading ? "Loading..." : "Register"}</Button>
         </form>
       </div>
       <p className={styles.register__link}>

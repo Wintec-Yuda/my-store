@@ -18,7 +18,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
     <SessionProvider session={session}>
       <div className={lato.className}>
         {!disableNavbar.includes(pathname.split("/")[1]) && <Navbar />}
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </div>
     </SessionProvider>
   );
